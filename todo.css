@@ -1,0 +1,22 @@
+.container{
+	width:100%;
+	margin:50px;
+}
+.table{
+	width: 100%;
+	display: table;
+	border-collapse: collapse;
+
+}
+.row{
+	display: table-row;
+	width: auto;
+
+}
+.column{
+	float: left;
+	display: table-column;
+	width: 32%;
+	padding-left: 10px;
+	margin: 2px auto;
+}
