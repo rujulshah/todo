@@ -1,5 +1,5 @@
 .container{
-	width:100%;
+	width:90%;
 	margin:50px;
 }
 .table{
@@ -13,10 +13,42 @@
 	width: auto;
 
 }
-.column{
-	float: left;
-	display: table-column;
+.columnheader{
+	display: table-cell;
 	width: 32%;
-	padding-left: 10px;
-	margin: 2px auto;
+	text-align: center;
+	background: grey;
+}
+.column{
+	/*float: left;*/
+	display: table-cell;
+	padding: 10px;
+	/*margin: 2px auto;*/
+	border-right: 1px solid;
+	border-left: 1px solid;
+	border-bottom: 1px solid;
+
+}
+input[type =text]{
+	width:100%;
+	padding: 7px;
+	box-sizing:border-box;
+	font-size: 14pt;
+	border: 2px solid 	#008B8B;
+}
+ul{
+	padding: 0
+}
+li{
+	list-style-type: none;
+	margin:0;
+	padding: 0;
+	font-size: 14pt;
+}
+input[type=checkbox]{
+margin-right: 5px;
+}
+.line {
+  text-decoration: line-through;
+  text-decoration-color: red;
 }

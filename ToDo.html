@@ -10,13 +10,18 @@
 			<h1>Enter your list below:</h1>	
 			<div class="table">
 				<div class ="row">
-					<div class="colHeader">
-						
+					<div class="columnheader">
+						<h3>TODAY</h3>
+					</div>
+					<div class="columnheader">
+						<h3>TOMORROW</h3>
+					</div>
+					<div class="columnheader">
+						<h3>SOMEDAY</h3>	
 					</div>
 				</div>
 				<div class="row">
-					<div class="column" id="todayList">
-						<h3>TODAY</h3>	
+					<div class="column" id="todayList">						
 						<div id="listvalue">
 							<!--<label>To Do:</label>-->
 							<input type="text" name ="listValue" id="listTDYValue" onkeyup="save(event,'TDY')">
@@ -29,7 +34,7 @@
 						</div>
 					</div>	
 					<div class="column" id="tomorrowList">
-						<h3>TOMORROW</h3>	
+							
 						<div id="listvalue">
 							<!--<label>To Do:</label>-->
 							<input type="text" name ="listValue" id="listTMRValue" onkeyup="save(event,'TMR')">
@@ -42,7 +47,7 @@
 						</div>
 					</div>	
 					<div class="column" id="somedayList">
-						<h3>SOMEDAY</h3>	
+						
 						<div id="listvalue">
 							<!--<label>To Do:</label>-->
 							<input type="text" name ="listValue" id="listSDYValue" onkeyup="save(event,'SDY')">
