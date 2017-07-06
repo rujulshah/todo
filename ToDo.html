@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-    	<link rel="stylesheet" type="text/css" href="todo.css">  
-    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  	
+    	<link rel="stylesheet" type="text/css" href="todo.css">
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<title>TO DO LIST</title>
 	</head>
 	<body>
 		<div id="result"></div>
 		<div class="container">
-			<h1>Enter your list below:</h1>	
+			<h1>Enter your list below:</h1>
 			<div class="table">
 				<div class ="row">
 					<div class="columnheader">
@@ -18,52 +18,52 @@
 						<h3>TOMORROW</h3>
 					</div>
 					<div class="columnheader">
-						<h3>SOMEDAY</h3>	
+						<h3>SOMEDAY</h3>
 					</div>
 				</div>
 				<div class="row">
-					<div class="column" id="todayList">						
+					<div class="column" id="todayList">
 						<div id="listvalue">
 							<!--<label>To Do:</label>-->
 							<input type="text" name ="listValue" id="listTDYValue" onkeyup="saveIfEnterKey(event,'TDY', 'listTDYValue')">
 							<!--<input type="submit" name ="submit" onclick="addToList('TDY')">-->
-						</div>	
-						<div id="divTDYList">
-							<ul id="listTDYUL" contenteditable="true">
-								
-							</ul>				
 						</div>
-					</div>	
+						<div id="divTDYList">
+							<ul id="listTDYUL" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+							</ul>
+						</div>
+					</div>
 					<div class="column" id="tomorrowList">
-							
+
 						<div id="listvalue">
 							<!--<label>To Do:</label>-->
 							<input type="text" name ="listValue" id="listTMRValue" onkeyup="saveIfEnterKey(event,'TMR', 'listTMRValue')">
 							<!--<input type="submit" name ="submit" onclick="addToList('TMR')">-->
-						</div>	
-						<div id="divTMRList">
-							<ul id="listTMRUL">
-								
-							</ul>				
 						</div>
-					</div>	
+						<div id="divTMRList">
+							<ul id="listTMRUL" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+							</ul>
+						</div>
+					</div>
 					<div class="column" id="somedayList">
-						
+
 						<div id="listvalue">
 							<!--<label>To Do:</label>-->
 							<input type="text" name ="listValue" id="listSDYValue" onkeyup="saveIfEnterKey(event,'SDY', 'listSDYValue')">
 							<!--<input type="submit" name ="submit" onclick="addToList('SDY')">-->
-						</div>	
-						<div id="divSDYList">
-							<ul id="listSDYUL">
-								
-							</ul>				
 						</div>
-					</div>	
-				</div>	
+						<div id="divSDYList">
+							<ul id="listSDYUL" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+							</ul>
+						</div>
+					</div>
+				</div>
 			</div>
-			
+
 		</div>
 		<script type="text/javascript" src="todo.js"></script>
-	</body>	
-</html>	
+	</body>
+</html>

@@ -41,6 +41,46 @@ function GUID() {
   return Math.random().toString(16).substr(2, 10);
 }
 
+function allowDrop(e) {
+	//alert("allowDrop");
+	e.preventDefault();
+	//alert(e.target.id);
+}
+
+function dragStart(e) {
+  //alert(JSON.stringify(e));
+	//alert(this.id);
+  this.style.opacity = "0.5";
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('liID', e.target.id);
+}
+function dragEnd(e) {
+  this.style.opacity = "1";
+}
+function dragEnter(e) {
+  e.target.style.border = "1px dotted red";
+}
+function dragLeave(e) {
+  e.target.style.border = "";
+}
+function drop(e) {
+  // Don't do anything if dropping the same column we're dragging.
+    // Set the source column's HTML to the HTML of the column we dropped on.
+    // dragElement.innerHTML = this.innerHTML;
+    // this.innerHTML = e.dataTransfer.getData('text/html');
+		event.preventDefault();
+		e.target.style.border = "";
+		var data = e.dataTransfer.getData("liID");
+		var UL = document.getElementById(e.target.parentNode.id);
+	  UL.insertBefore(document.getElementById(data),e.target);
+		var targetLI = e.target.id;
+		var targetLITag = todoList[targetLI].tag;
+		var dragItem = todoList[data];
+		dragItem.tag = targetLITag;
+		saveListItem(dragItem, false);
+
+}
+
 function saveIfEnterKey(e, day, element_id) {
   if (e.keyCode === 13) {
     addTodo(day, element_id);
@@ -63,6 +103,12 @@ function updateDisplay(todo) {
   list_span.innerHTML = todo.todo;
   list_span.contentEditable = "true";
   listLI.id = todo.id; ///give id to each tag1
+  listLI.draggable = "true"; //make draggable
+  listLI.addEventListener("dragstart", dragStart); //make opacity 0.5 to show drag
+	listLI.addEventListener("dragend", dragEnd); //make opacity 0.5 to show drag
+	listLI.addEventListener("dragenter", dragEnter);
+	listLI.addEventListener("dragleave", dragLeave);
+  //listLI.addEventListener("drop", drop);//make opacity 0.5 to show drag
   var checkBox = document.createElement("input");
   checkBox.type = "checkbox";
   checkBox.checked = todo.completed;
@@ -100,6 +146,7 @@ function saveListItem(item, is_new) {
   var saveURL = api.getCreateUpdateAPI(item.id);
   $.post(saveURL, JSON.stringify(item), function(response) {
       if (is_new == true) {
+				todoList[item.id] = item;///check drag for new one
         updateDisplay(item);
         //counter = counter + 1;
       }
@@ -119,6 +166,7 @@ function loadData() {
         var source = value._source;
         var item = new ToDo(source.todo, source.create_time, source.completed, source.tag, source.id);
         updateDisplay(item);
+				todoList[source.id] = item; //store dataset for later
       });
     })
     .fail(function() {
@@ -128,5 +176,5 @@ function loadData() {
 
 // api uri
 var api = new API("localhost", "9200", "todo", "list3");
-//var counter = 0;
+var todoList = {};
 loadData();
