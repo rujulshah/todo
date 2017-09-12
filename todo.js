@@ -96,12 +96,22 @@ function addTodo(day, element_id) {
   text_box.value = "";
 }
 
+function editTodo(e){
+  //alert(e.target.innerHTML + '   ' + e.target.todoID);
+  var edit_item = todoList[e.target.todoID];
+  edit_item.todo = e.target.innerHTML;
+  //alert(JSON.stringify(edit_item));
+  saveListItem(edit_item, false);
+}
+
 function updateDisplay(todo) {
   var listUL = document.getElementById("list" + todo.tag + "UL");
   var listLI = document.createElement("li");
   var list_span = document.createElement("span");
   list_span.innerHTML = todo.todo;
   list_span.contentEditable = "true";
+  list_span.addEventListener("focusout", editTodo);
+  list_span.todoID = todo.id;//to use in edit .. use protoype property
   listLI.id = todo.id; ///give id to each tag1
   listLI.draggable = "true"; //make draggable
   listLI.addEventListener("dragstart", dragStart); //make opacity 0.5 to show drag
